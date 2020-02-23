@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>提案统计</title>
+
+
+    <link href="css/all.css" rel="stylesheet" type="text/css">
+    <link href="js/editor/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="js/editor/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-color: #e6ecf5">
+<div class="book_con01">
+
+
+    <p class="book_p">
+        <table class="book_table" border="1" cellpadding="10">
+    <tr>
+        <td class="tr_color" colspan="4">
+       提交提案数据汇总表
+    </td>
+
+
+    </tr>
+    <tr>
+        <td><label class="td_label">届次</label></td>
+        <td colspan="3">第十五一次会议</td>
+    </tr>
+    <tr>
+        <td><label class="td_label">开始时间</label></td>
+        <td >2016年11月10日</td>
+        <td><label class="td_label">结束时间</label></td>
+        <td >2016年12月10日</td>
+    </tr>
+    <tr>
+        <td><label class="td_label">总共提案</label></td>
+        <td  style="color: red" colspan="3">25件</td>
+
+    </tr>
+    <tr>
+        <td><label class="td_label">未分类提案</label></td>
+        <td  style="color: red" >8件</td>
+        <td><label class="td_label">未审查提案</label></td>
+        <td  style="color: red" >1件</td>
+
+    </tr>
+    <tr>
+        <td><label class="td_label">立案提案</label></td>
+        <td  style="color: red" >8件</td>
+        <td><label class="td_label">意见建议</label></td>
+        <td  style="color: red" >8件</td>
+
+    </tr>
+
+
+</table>
+    <p class="my_static" id="chart">
+    </p>
+    <p class="book_foot"><input type="button" value="导出"/><input type="button" value="打印"/><input type="button" value="关闭"/></p>
+</div>
+<script  src="js/jquery/jQuery-2.2.0.min.js"></script>
+<script  src="js/echarts/echarts-all.js"></script>
+<script >
+    $(function(){
+        var myChart = echarts.init($("#chart")[0]);
+        option = {
+            title: {
+                x: 'center',
+                text: '提案分类统计图',
+
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+
+            calculable: true,
+            grid: {
+                borderWidth: 0,
+                y: 80,
+                y2: 60
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    show: true,
+                    data: ['农业水利', '科学技术', '教育', '政治法律', '城乡教育', '公交邮电', '城乡建设', '经济发展', '城市规划', '公共卫生', '社会福利']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    show: true
+                }
+            ],
+            series: [
+                {
+                    name: '提案分类统计图',
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                // build a color map as your need.
+                                var colorList = [
+                                    '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                                    '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                                    '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                                ];
+                                return colorList[params.dataIndex]
+                            },
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{b}\n{c}'
+                            }
+                        }
+                    },
+                    data: [20,10,10,4,12,5,6,5,25,23,7],
+                    markPoint: {
+                        tooltip: {
+                            trigger: 'item',
+                            backgroundColor: 'rgba(0,0,0,0)',
+                            formatter: function(params){
+                                return '<img src="'
+                                        + params.data.symbol.replace('image://', '')
+                                        + '"/>';
+                            }
+                        },
+                        data: [
+                            {xAxis:0, y: 25, name:'Line', symbolSize:20, symbol: 'image://../asset/ico/折线图.png'},
+                            {xAxis:1, y: 25, name:'Bar', symbolSize:20, symbol: 'image://../asset/ico/柱状图.png'},
+                            {xAxis:2, y: 25, name:'Scatter', symbolSize:20, symbol: 'image://../asset/ico/散点图.png'},
+                            {xAxis:3, y: 25, name:'K', symbolSize:20, symbol: 'image://../asset/ico/K线图.png'},
+                            {xAxis:4, y: 25, name:'Pie', symbolSize:20, symbol: 'image://../asset/ico/饼状图.png'},
+                            {xAxis:5, y: 25, name:'Radar', symbolSize:20, symbol: 'image://../asset/ico/雷达图.png'},
+                            {xAxis:6, y: 25, name:'Chord', symbolSize:20, symbol: 'image://../asset/ico/和弦图.png'},
+                            {xAxis:7, y: 25, name:'Force', symbolSize:20, symbol: 'image://../asset/ico/力导向图.png'},
+                            {xAxis:8, y: 25, name:'Map', symbolSize:20, symbol: 'image://../asset/ico/地图.png'},
+                            {xAxis:9, y: 25, name:'Gauge', symbolSize:20, symbol: 'image://../asset/ico/仪表盘.png'},
+                            {xAxis:10, y: 25, name:'Funnel', symbolSize:20, symbol: 'image://../asset/ico/漏斗图.png'},
+                        ]
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    });
+</script>
+</body>
+</html>

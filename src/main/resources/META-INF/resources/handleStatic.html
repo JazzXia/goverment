@@ -1,0 +1,159 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+<title>民意统计</title>
+
+<link href="css/all.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="js/bstable/css/bootstrap-table.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div class="div_find">
+
+
+    <p>
+        <label class="find_labela">统计区间：</label><input type="date" class="find_input"/><label class="static_label">至</label><input type="date" class="find_input"/><input type="button" value="搜索一下" class="find_but" id="but_open"></p>
+
+    </div>
+   <p class="p_static"><span>社情民意采用统计</span></p>
+<p><span class="static_span01">统计时间：2017-03-22</span><span class="static_span01">统计人：管理员</span><span class="static_span02"> <i class="down_i" ></i><a href="#" class="add_a" style="margin-right: 10px">导出</a>
+        <i class="print_i" ></i><a href="#" class="add_a">打印</a></span></p>
+<p>
+    <table border="1"  class="static_tabel">
+    <tr class="tr_color">
+        <td style="width: 25%">社情民意信息数</td>
+        <td  style="width: 25%">256</td>
+        <td style="width: 25%">获得积分</td>
+        <td  style="width: 25%">85</td>
+    </tr>
+    <tr class="tr_color">
+       
+      
+        <td colspan="2"> 采用结果</td>
+        <td>数据</td>
+        <td>百分比</td>
+       
+
+       
+      
+    </tr>
+    <tr>
+        <td class="td_blue"  colspan="2">市政协办公厅信息采稿情况</td>
+        <td >102</td>
+        <td>48.9%</td>
+
+    </tr>
+    <tr>
+        <td class="td_blue"  colspan="2">区政协信息采稿情况</td>
+        <td >62</td>
+        <td>36.9%</td>
+
+    </tr>
+    <tr>
+        <td class="td_blue"  colspan="2">全国政协信息采稿情况</td>
+        <td >78</td>
+        <td>39.9</td>
+
+    </tr>
+    <tr>
+        <td class="td_blue"  colspan="2">领导批示情况</td>
+        <td >78</td>
+        <td>39.9</td>
+
+    </tr>
+    <tr>
+        <td class="td_blue"  colspan="2">部门批示情况</td>
+        <td >78</td>
+        <td>39.9</td>
+
+    </tr>
+ 
+    </table>
+</p>
+<p class="P_chart" id="chart"></p>
+
+<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+<script  src="js/echarts/echarts-all.js"></script>
+<script >
+    $(function(){
+        var myChart = echarts.init($("#chart")[0]);
+        option = {
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data:['市政协','区政协','全国政协','领导批示','部门批示']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'center',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'采用情况',
+                    type:'pie',
+                    radius : ['50%', '70%'],
+                    itemStyle : {
+                        normal : {
+                            label : {
+                                show : false
+                            },
+                            labelLine : {
+                                show : false
+                            }
+                        },
+                        emphasis : {
+                            label : {
+                                show : true,
+                                position : 'center',
+                                textStyle : {
+                                    fontSize : '30',
+                                    fontWeight : 'bold'
+                                }
+                            }
+                        }
+                    },
+                    data:[
+                        {value:162, name:'市政协'},
+                        {value:62, name:'区政协'},
+                        {value:78, name:'全国政协'},
+                        {value:78, name:'部门批示'},
+                        {value:78, name:'领导批示'}
+
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    });
+</script>
+
+
+
+</body>
+</html>

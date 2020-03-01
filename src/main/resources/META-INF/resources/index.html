@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
     <title>委员综合服务平台</title>
     <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
@@ -21,38 +22,38 @@
             <nav class="navbar navbar-static-top">
                 <a class="sidebar-toggle">
                     <span class="sr-only">切换</span>
-                </a><span class="index_top"><strong>xxxxx综合服务平台</strong></span>
+                </a><span class="index_top"><strong>综合服务平台</strong></span>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o "></i>
-                                <span class="label label-success">4</span>
-                            </a>
-                        </li>
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">10</span>
-                            </a>
-                        </li>
-                        <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-flag-o"></i>
-                                <span class="label label-danger">9</span>
-                            </a>
-                        </li>
+                        <!--<li class="dropdown messages-menu">-->
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+                                <!--<i class="fa fa-envelope-o "></i>-->
+                                <!--<span class="label label-success">4</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="dropdown notifications-menu">-->
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+                                <!--<i class="fa fa-bell-o"></i>-->
+                                <!--<span class="label label-warning">10</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="dropdown tasks-menu">-->
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+                                <!--<i class="fa fa-flag-o"></i>-->
+                                <!--<span class="label label-danger">9</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">administrator</span>
+                                <span class="hidden-xs" id="infoName"></span>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a class="menuItem" data-id="userInfo" href="/SystemManage/User/Info"><i class="fa fa-user"></i>个人信息</a></li>
+                                <li><a class="menuItem" data-id="userInfo" href="/myMes.html"><i class="fa fa-user"></i>个人信息</a></li>
                                 <li><a href="javascript:void();"><i class="fa fa-trash-o"></i>清空缓存</a></li>
-                                <li><a href="javascript:void();"><i class="fa fa-paint-brush"></i>皮肤设置</a></li>
+                                <!--<li><a href="javascript:void();"><i class="fa fa-paint-brush"></i>皮肤设置</a></li>-->
                                 <li class="divider"></li>
-                                <li><a href="~/Login/OutLogin"><i class="ace-icon fa fa-power-off"></i>安全退出</a></li>
+                                <li><a href="#" id="logoutButton"><i class="ace-icon fa fa-power-off" ></i>安全退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -113,6 +114,9 @@
         </div>
     </div>
     <script src="js/jquery/jQuery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/layer.js"></script>
+    <script src="js/cookie_util.js"></script>
+    <script src="index/index.js"></script>
     <script src="js/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
 </body>

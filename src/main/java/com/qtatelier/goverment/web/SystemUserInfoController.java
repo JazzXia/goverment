@@ -37,8 +37,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/role")
 public class SystemUserInfoController{
 
-    //日志
     private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private BlogUserService blogUserService;
     @Autowired
@@ -119,7 +119,8 @@ public class SystemUserInfoController{
                 blogUser.setImageName(userForBase.getImageName());
                 blogUser.setNickName(userForBase.getNickName());
                 blogUser.setUserId(userForBase.getUserId());
-                if (!userForBase.getPassword().equals(DigestUtils.md5Hex(userForBase.getSalt() + blogUser.getPassword().trim()))) {
+
+                 if (!userForBase.getPassword().equals(DigestUtils.md5Hex(userForBase.getSalt() + blogUser.getPassword().trim()))) {
                     logger.warn(logStr + "密码错误");
                     resultView = new ResultView(CodeEnum.ERROR_403, "登录失败，账号或密码错误");
                     return resultView;
